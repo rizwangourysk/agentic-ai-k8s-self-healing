@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: agent-healing-demo
+  namespace: ai-devops
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: agent-healing-demo
+
+  template:
+    metadata:
+      labels:
+        app: agent-healing-demo
+
+    spec:
+      containers:
+        - name: app
+          image: nginx:this-image-does-not-exist
+          ports:
+            - containerPort: 80
